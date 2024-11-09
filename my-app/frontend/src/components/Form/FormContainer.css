@@ -1,0 +1,143 @@
+                .form-container {
+                    height: 450px;
+                    width: 650px;
+                    /* Aap yahan apne form ki desired height set kar sakte hain */
+                    overflow: hidden;
+                    /* Content ko clip karne ke liye agar zyada content ho */
+                    /* transition: height 0.3s ease; */
+                    /* Height smoothly adjust hone ke liye */
+                }
+                
+                @media (max-width: 600px) {
+                    .form-container {
+                        /* padding: 8px; */
+                        height: 550px;
+                        width: 350px;
+                        /* Adjust padding for smaller screens */
+                    }
+                    .MuiTypography-h4 {
+                        font-size: 1.5rem;
+                        /* Smaller font size for titles */
+                    }
+                    .MuiTextField-root {
+                        margin-bottom: 16px;
+                        /* Adjust margin for text fields */
+                    }
+                    .MuiGrid-item {
+                        flex-basis: 100%;
+                        /* Stack grid items on small screens */
+                        max-width: 100%;
+                    }
+                    .MuiButton-root {
+                        width: 100%;
+                        /* Make buttons full width */
+                        /* margin-top: 8px; */
+                        /* Add some margin on top of buttons */
+                    }
+                    .MuiInputBase-input {
+                        font-size: 14px;
+                        /* Adjust input font size */
+                    }
+                    /* Additional adjustments can be made as needed */
+                }
+                
+                @media screen and(max-width:300px) {
+                    .form-container {
+                        width: 30px;
+                    }
+                }
+                /* @media (max-width: 600px) {
+                    .responsive-image {
+                        display: none;
+                    }
+                } */
+                
+                .new {
+                    margin-bottom: 1.35em;
+                }
+                /* @media (max-width: 600px) {
+                    .responsiveDiv {
+                        display: none;
+                        display: window.innerWidth <=600 ? 'none': 'block',
+                    }
+                } */
+                
+                @media screen and(max-width: 600px) {
+                    .responsive-image {
+                        /* display: none;
+                        height: 0; */
+                        /* Hide the image on small screens */
+                        display: none !important;
+                        /* Ensures the image is hidden */
+                        height: 0 !important;
+                    }
+                }
+                /* .form-container {
+                    width: 100%;
+                    padding: 20px;
+                    background-color: #1f1f1f;
+                    border-radius: 20px;
+                } */
+                /* Large screens (desktop) */
+                
+                @media (min-width: 1200px) {
+                    .form-container {
+                        max-width: 800px;
+                        margin: 0 auto;
+                    }
+                    .MuiTextField-root {
+                        margin-bottom: 16px;
+                    }
+                }
+                /* Medium screens (tablet landscape and smaller) */
+                
+                @media (max-width: 1199px) {
+                    .form-container {
+                        max-width: 600px;
+                    }
+                    .MuiTextField-root {
+                        font-size: 0.9rem;
+                    }
+                }
+                /* Small screens (tablet portrait) */
+                
+                @media (max-width: 768px) {
+                    .form-container {
+                        padding: 15px;
+                    }
+                    .MuiTextField-root {
+                        font-size: 0.8rem;
+                    }
+                    .MuiGrid-root {
+                        flex-direction: column;
+                        /* display: none; */
+                        /* gap: 10px; */
+                    }
+                    .MuiButton-root {
+                        font-size: 0.85rem;
+                    }
+                }
+                /* Extra small screens (mobile) */
+                
+                @media (max-width: 480px) {
+                    .form-container {
+                        padding: 10px;
+                    }
+                    .MuiTextField-root {
+                        font-size: 0.75rem;
+                    }
+                    .MuiButton-root {
+                        font-size: 0.75rem;
+                    }
+                    .MuiBox-root {
+                        padding-right: 16px;
+                        /* Adjust this value as needed */
+                    }
+                }
+                
+                @media (max-width: 500px) {
+                    .MuiBox-root {
+                        padding-right: 16px;
+                        /* Adjust this value as needed */
+                    }
+                }
