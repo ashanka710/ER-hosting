@@ -6,16 +6,14 @@ import PersonIcon from '@mui/icons-material/Person';
 import Email from './Email.svg';
 import Contact from './Contact.svg';
 import Intrested from './Intrested.svg'
-// import  from './Male.svg';
+
 import Address from './location.svg'; // Adjust the path based on your file structure
 import StateImage from './State.svg'; // Adjust the path based on your file structure
 import CityImage from './City.svg'; // Adjust the path based on your file structure
 import Hear from './Hear.svg';
 import Pincode from './Pincode.svg';
 import CloseIcon from '@mui/icons-material/Close';
-// import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-// import 'react-toastify/dist/ReactToastify.css';
-// import { ToastContainer, toast } from 'react-toastify';
+
 import Education from './Education.svg';
 import FormContainer from './FormContainer.css';
 
@@ -25,15 +23,13 @@ import {
   Button,
   TextField,
   InputAdornment,
-  FormControl,
-
   RadioGroup,
   FormControlLabel,
   Radio,
   Box,
-  Select,
+ 
   MenuItem,
-  InputLabel,
+ 
   Container
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'; // Ensure you have this icon imported
@@ -168,7 +164,7 @@ const ResponsiveGrid = () => {
 
 
     // Send data to backend
-    fetch('http://localhost:5000/api/submit', requestOptions)
+    fetch('https://er-form.onrender.com/api/submit', requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -209,18 +205,7 @@ const ResponsiveGrid = () => {
   
   
 
-  // const isButtonDisabled =
-  // !formData.address.trim() ||
-  // !selectedState ||
-  // !selectedCity ||
-  // !pincode.trim() ||
-  // !formData.Education.trim() || // Disable if education is empty
-  // !formData.educationStatus.trim() ||
-  // !formData.listenedDate.trim();
   
-  // !EducationStatus.trim() ||
-  // !Education.trim();
-  // !listenedDate.trim();
 
 
 
@@ -266,58 +251,6 @@ const ResponsiveGrid = () => {
 
 
 
-// const validateField = (name, value) => {
-//   let error = '';
-
-//   // Validate first name
-//   if (name === 'firstName') {
-//     const nameRegex = /^[a-zA-Z\s]+$/;
-//     if (!nameRegex.test(value)) {
-//       error = 'First name must contain only letters and spaces.';
-//     }
-//   }
-
-//   // Validate last name
-//   if (name === 'lastName') {
-//     const nameRegex = /^[a-zA-Z\s]+$/;
-//     if (!nameRegex.test(value)) {
-//       error = 'Last name must contain only letters and spaces.';
-//     }
-//   }
-
-//   // Validate email
-//   if (name === 'email') {
-//     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-//     if (!emailRegex.test(value)) {
-//       error = 'Invalid email format.';
-//     }
-//   }
-
-//   // Validate contact
-//   if (name === 'contact') {
-//     const phoneRegex = /^[0-9]{10}$/; // Ensure exactly 10 digits
-//     if (!phoneRegex.test(value)) {
-//       error = 'Contact number must be exactly 10 digits.';
-//     }
-//   }
-
-//   // Validate gender (ensure it's selected)
-//   if (name === 'gender' && value === '') {
-//     error = 'Please select a gender.';
-//   }
-
-//   // Validate address
-//   if (name === 'address' && value.trim() === '') {
-//     error = 'Address cannot be empty.';
-//   }
-
-//   setErrors((prevErrors) => ({
-//     ...prevErrors,
-//     [name]: error,
-//   }));
-// };
-
-
 
 
 
@@ -338,11 +271,7 @@ const isFormFilled =
     const allFieldsFilled = Object.values(formData).every((field) => field!== '');
     setIsButtonDisabled(!allFieldsFilled);
   }, [formData]);
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log('Form submitted:', formData);
-  //   // Add your form submission logic here
-  // };
+ 
   const handleArrowClick = () => {
     setIsNewForm(!isNewForm); // Toggle the form state
   };
@@ -428,9 +357,9 @@ const isFormFilled =
     container
     spacing={0} // Default spacing
     sx={{
-      width: '100%', // Set full width
-      maxWidth: '1200px', // Limit max width to a specific size (adjust as needed)
-      backgroundColor: '#f5f5f5',
+      // width: '100%', // Set full width
+      // maxWidth: '1200px', // Limit max width to a specific size (adjust as needed)
+      // backgroundColor: '#f5f5f5',
       // '@media (max-width:600px)': {
       //   spacing: 0,
       //   maxWidth: '100%', // Full width for smaller screens
@@ -459,25 +388,7 @@ const isFormFilled =
           },
         }}
       >
-         {/* <div  style={{ display: 'flex', alignItems: 'center', backgroundColor: '#f7f7f7', borderTopLeftRadius: '0px', borderBottomLeftRadius: '0px', height:"460px", width:"100%",paddingTop:"20px" ,borderRadius:"36px" }}>
-      
-
-<img
-  src={bgimage}
-position="Fixed"
-  alt="Fixed"
-  style={{ 
-    width: '100%',         // Keeps the image responsive
-    maxWidth: '500px',      // Maximum width constraint
-    height: 'auto',         // Keeps the aspect ratio of the image intact
-    maxHeight: '300px',     // Set a maximum height if needed
-    // marginRight: '20px', 
-    // marginleft: '60px',   // Added margin
-  
-  }}
-/>
-    </div> */}
- 
+   
 
       <div className="responsiveDiv"
   style={{
@@ -487,7 +398,7 @@ position="Fixed"
     // backgroundColor: '#f7f7f7',
     borderTopLeftRadius: '0px',
     borderBottomLeftRadius: '0px',
-    height: "460px",
+    // height: "460px",
     width: "100%",
     paddingTop: "20px",
     borderRadius: "36px", 
@@ -1558,26 +1469,22 @@ onChange={(e) => {
       </Grid>
         
 
-<TextField
+      <TextField
   fullWidth
   margin="normal"
   select
   label="Interested For"
   name="interestedFor"
-  value={formData.interestedFor} // Replace with your actual state variable
-  onChange={handleChange} // Replace with your actual change handler
-  error={!!errors.interestedFor} // Replace with the error handling for this field
-  helperText={errors.interestedFor} // Replace with the error message for this field
+  value={formData.interestedFor}
+  onChange={handleChange}
+  placeholder="Select your interest"
   InputProps={{
     startAdornment: (
       <InputAdornment position="start">
-        <img
-          src={Intrested} // Replace with your actual image source
-          alt="Interest Icon"
-          style={{ width: '20px', height: '20px', marginRight: '8px', cursor: 'pointer' }}
-        />
+        <img src={Intrested} alt="Interest Icon" style={{ width: '20px', height: '20px', marginRight: '8px' }} />
       </InputAdornment>
     ),
+    style: { color: 'white' },
   }}
   InputLabelProps={{
     sx: {
@@ -1591,22 +1498,22 @@ onChange={(e) => {
     displayEmpty: true,
     IconComponent: () => (
       <img
-        src={Dropdown} // Replace with your actual image source
+        src={Dropdown} // Replace with your actual dropdown icon source
         alt="Dropdown Icon"
-        style={{ width: '10px', height: '10px', color: '#f6ae22', paddingRight: '30px', margin: '10px' }}
+        style={{ width: '10px', height: '10px', paddingRight: '30px', margin: '10px' }}
       />
     ),
     MenuProps: {
       PaperProps: {
         style: {
-          maxHeight: 200, // Set the maximum height for the dropdown to enable scrolling
-          overflowY: 'auto',
-          // borderRadius: '30px',
+          maxHeight: 200,
         },
       },
     },
   }}
   sx={{
+    width: '100%', // Adjust the width as needed (e.g., 75% or a fixed width like '300px')
+    marginLeft: '25px', // Adjust this value to move it slightly to the right
     '& .MuiOutlinedInput-root': {
       '& fieldset': {
         borderColor: '#f6ae22',
@@ -1620,13 +1527,9 @@ onChange={(e) => {
       },
     },
     '& .MuiSelect-select': {
-      color: formData.interestedFor ? '#000000' : '#aaaaaa',
-    },
-    '& .MuiInputBase-input': {
-      color: formData.interestedFor ? '#ffff' : '#aaaaaa',
+      color: formData.interestedFor ? '#fffff' : '#aaaaaa',
     },
   }}
-  style={{ color: '#ffff' }}
 >
   <MenuItem value="" sx={{ color: '#aaaaaa' }}>
     <em>Interested For</em>
@@ -1640,32 +1543,22 @@ onChange={(e) => {
   <MenuItem value="Data Science" sx={{ backgroundColor: '#f6ae22', '&:hover': { backgroundColor: '#272425', color: '#ffffff' } }}>
     Data Science
   </MenuItem>
-  {/* Add more options as needed */}
 </TextField>
 
 
 
 
+
 <Box
-  component="form" // Adding form wrapper
   display="flex"
-  flexDirection="column" // Set the direction to column for vertical stacking
-  alignItems="center" // Centers form content horizontally
+  justifyContent="center"
+  alignItems="center"
   sx={{
-    width: '100%', // Set width of the form container
-    mt: 2, // Adds margin-top if needed
+    width: '100%',
+    mt: 2,
   }}
 >
-  {/* Other form elements like input fields go here */}
-
-  <Box
-    display="flex"
-    justifyContent="center" // Center horizontally
-    alignItems="center" // Center vertically
-    mt={2}
-    gap={2} // Adds space between buttons
-  >
-   <Button
+  <Button
     variant="outlined"
     onClick={handleReset}
     sx={{
@@ -1679,32 +1572,36 @@ onChange={(e) => {
       borderRadius: '30px',
       padding: '10px 30px',
       textTransform: 'none',
+      width: '150px', // Adjust width as needed
+      mx: 1, // Horizontal margin to space buttons apart
     }}
   >
     Reset
   </Button>
 
-    <Button
-      variant="contained"
-      type="button"
-      sx={{
-        backgroundColor: '#f6ae22',
-        color: '#1f1f1f',
-        borderRadius: '30px',
-        padding: '10px 30px',
-        textTransform: 'none',
-        '&:hover': {
-          backgroundColor: '#1f1f1f',
-          color: '#f6ae22',
-          border: '1px solid #f6ae22', // Adds a yellow border on hover
-        },
-      }}
-      onClick={handleNext}
-    >
-      Next
-    </Button>
-  </Box>
+  <Button
+    variant="contained"
+    type="button"
+    onClick={handleNext}
+    sx={{
+      backgroundColor: '#f6ae22',
+      color: '#1f1f1f',
+      borderRadius: '30px',
+      padding: '10px 30px',
+      textTransform: 'none',
+      width: '150px', // Adjust width as needed
+      mx: 1, // Horizontal margin to space buttons apart
+      '&:hover': {
+        backgroundColor: '#1f1f1f',
+        color: '#f6ae22',
+        border: '1px solid #f6ae22',
+      },
+    }}
+  >
+    Next
+  </Button>
 </Box>
+
 
  
 
