@@ -75,7 +75,7 @@ app.use(cors()); // Enable CORS
 app.use(bodyParser.json()); // Parse JSON data
 
 // Connect to MongoDB
-mongoose.connect(`mongodb://127.0.0.1:27017/12`)
+mongoose.connect(`mongodb+srv://ashankaidevify:idevify%40gmail.com@cluster0.ijmsuse.mongodb.net/book`)
     .then(() => console.log("MongoDB connected"))
     .catch(err => console.error("MongoDB connection error:", err));
 
