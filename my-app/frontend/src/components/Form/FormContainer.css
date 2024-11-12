@@ -8,6 +8,15 @@
     margin-bottom: 1.35em;
 }
 
+.main-div {
+    width: auto;
+    margin: 0 auto;
+    /* Centers the element horizontally */
+    text-align: center;
+    padding: 80px;
+    /* Centers text inside .main-div */
+}
+
 @media screen and(max-width: 600px) {
     .responsive-image {
         display: none !important;

@@ -350,7 +350,7 @@ const isFormFilled =
   };
 
   return (
-    <>
+    <div className="main-div">
     <ToastContainer />
     <Grid
     
@@ -1618,7 +1618,7 @@ onChange={(e) => {
     </div>
     
     </Grid>
-    </>
+    </div>
   );
 };
 
