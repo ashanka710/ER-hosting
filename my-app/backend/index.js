@@ -117,5 +117,5 @@ app.post('/api/submit', async(req, res) => {
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server is running on http:localhost, ${port}`);
+    console.log(`Server is running on http:${process.env.HOST}, ${port}`);
 });
