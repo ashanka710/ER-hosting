@@ -164,7 +164,7 @@ const ResponsiveGrid = () => {
 
 
     // Send data to backend
-    fetch('http://localhost:5000/api/submit', requestOptions)
+    fetch('https://ef-cd7f.onrender.com/api/submit', requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
