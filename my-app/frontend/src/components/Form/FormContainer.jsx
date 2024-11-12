@@ -164,7 +164,7 @@ const ResponsiveGrid = () => {
 
 
     // Send data to backend
-    fetch('https://ef-cd7f.onrender.com/api/submit', requestOptions)
+    fetch('http://localhost:5000/api/submit', requestOptions)
         .then((response) => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -1397,13 +1397,13 @@ onChange={(e) => {
         <Grid container spacing={9} alignItems="center">
           {/* Gender Label */}
           <Grid item xs={2}>
-            <Typography variant="h6" sx={{ color: '#f6ae22' }}>
+            <Typography variant="h6" sx={{ color: '#f6ae22' }} className="gen">
               Gender:
             </Typography>
           </Grid>
 
           {/* Gender Options - Female and Male */}
-          <Grid item xs={10}>
+          <Grid item xs={10} className="gen">
             <RadioGroup
               row
               name="gender"
@@ -1411,7 +1411,7 @@ onChange={(e) => {
               onChange={handleChange} // onChange event to handle form changes
             >
               {/* Female Option */}
-              <FormControlLabel
+              <FormControlLabel className="gen"
                 value="F"
                 control={
                   <Radio
@@ -1438,7 +1438,7 @@ onChange={(e) => {
               />
 
               {/* Male Option */}
-              <FormControlLabel
+              <FormControlLabel className="gen"
                 value="M"
                 control={
                   <Radio
@@ -1451,7 +1451,7 @@ onChange={(e) => {
                   />
                 }
                 label={
-                  <Grid container alignItems="center">
+                  <Grid container alignItems="center" className="gen">
                     <img
                       src={Male} // Use the image URL for Male
                       alt="Male"
