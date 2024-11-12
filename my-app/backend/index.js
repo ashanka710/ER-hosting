@@ -68,14 +68,14 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const User = require("./models/ER-Module"); // Ensure the correct path to the User model
 const app = express();
-const port = 5000; // Port for the backend server
+const port = process.env.PORT || 5000; // Port for the backend server
 
 
 app.use(cors()); // Enable CORS
 app.use(bodyParser.json()); // Parse JSON data
 
 // Connect to MongoDB
-mongoose.connect(`mongodb+srv://ashankaidevify:idevify%40gmail.com@cluster0.ijmsuse.mongodb.net/book`)
+mongoose.connect(`${process.env.MONGO_URI}`)
     .then(() => console.log("MongoDB connected"))
     .catch(err => console.error("MongoDB connection error:", err));
 
@@ -117,5 +117,5 @@ app.post('/api/submit', async(req, res) => {
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server is running on http:localhost`, port);
+    console.log(`Server is running on http:localhost, ${port}`);
 });
