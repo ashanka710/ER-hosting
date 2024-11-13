@@ -164,7 +164,7 @@ const ResponsiveGrid = () => {
 
    
     // Send data to backend 
-    fetch('https://er-form.onrender.com/api/submit', requestOptions)
+    fetch('http://localhost:5000/api/submit', requestOptions)
         .then((response) => { 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
