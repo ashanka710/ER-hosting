@@ -73,7 +73,7 @@ const port = process.env.PORT || 5000; // Port for the backend server
 
 // app.use(cors()); // Enable CORS
 app.use(cors({
-    origin: 'https://er-form-34cy.vercel.app/',
+    origin: 'https://projectname2024.vercel.app',
     // origin : 'http://localhost:5173',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
