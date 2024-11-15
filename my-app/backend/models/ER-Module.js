@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
     gender: String,
     address: String,
     state: { type: String, required: true }, // Ensure this is defined and required
-    city: { type: String },
+    // city: { type: String },
     postalCode: { type: String },
     education: { type: String },
     educationStatus: String,
