@@ -1669,8 +1669,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const ResponsiveGrid = () => {
 
-  const [states, setStates] = useState([]); // To store fetched states
-  const [cities, setCities] = useState([]); // To store fetched cities
+  // const [states, setStates] = useState(''); // To store fetched states
+  // const [cities, setCities] = useState(''); // To store fetched cities
   const [selectedState, setSelectedState] = useState(""); // For selected state
   const [selectedCity, setSelectedCity] = useState(""); // For selected city
   const [postalCode, setPincode] = useState(""); 
@@ -1700,9 +1700,9 @@ const ResponsiveGrid = () => {
    
 
   });// For pincode
-  useEffect(() => {
-    fetchStates();
-  }, []);
+  // useEffect(() => {
+  //   fetchStates();
+  // }, []);
 
 
 
@@ -1720,62 +1720,55 @@ const ResponsiveGrid = () => {
   
 
   // Function to fetch states directly
-  const fetchStates = async () => {
-    await fetch("https://countriesnow.space/api/v0.1/countries/states", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ iso2: "IN" }), // Assuming the country code is 'IN' for India
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.data.states && data.data.states.length > 0) {
-          setStates(data.data.states); // Store fetched states
-        } else {
-          console.error("No states found");
-        }
-      })
-      .catch((error) => console.error("Error fetching states:", error));
-  };
+  // const fetchStates = async () => {
+  //   await fetch("https://countriesnow.space/api/v0.1/countries/states", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ iso2: "IN" }), // Assuming the country code is 'IN' for India
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.data.states && data.data.states.length > 0) {
+  //         setStates(data.data.states); // Store fetched states
+  //       } else {
+  //         console.error("No states found");
+  //       }
+  //     })
+  //     .catch((error) => console.error("Error fetching states:", error));
+  // };
 
   // Function to fetch cities for a selected state
-  const fetchCities = async(stateName) => {
-    await fetch("https://countriesnow.space/api/v0.1/countries/state/cities", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ country: "India", state: stateName }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.data && data.data.length > 0) {
-          setCities(data.data); // Store fetched cities
-        } else {
-          setCities([]); // Clear cities if none found
-        }
-      })
-      .catch((error) => console.error("Error fetching cities:", error));
-  };
+  // const fetchCities = async(stateName) => {
+  //   await fetch("https://countriesnow.space/api/v0.1/countries/state/cities", {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({ country: "India", state: stateName }),
+  //   })
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       if (data.data && data.data.length > 0) {
+  //         setCities(data.data); // Store fetched cities
+  //       } else {
+  //         setCities([]); // Clear cities if none found
+  //       }
+  //     })
+  //     .catch((error) => console.error("Error fetching cities:", error));
+  // };
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent the default form submission
 
- formData.state=selectedState;
- formData.city=selectedCity;
+//  formData.state=selectedState;
+//  formData.city=selectedCity;
  
 
  console.log(formData.state);
  
 
-    if (formData.address==='' || formData.Education==='' ||formData.educationStatus==='' || formData.listenedDate===''|| formData.postalCode==='' ) {
-      
-      
-      toast.error('Please fill all details',{
-        position:'top-center'
-      })
 
-      }else{
 
     // Create the request options
     const requestOptions = {
@@ -1790,7 +1783,7 @@ const ResponsiveGrid = () => {
 
    
     // Send data to backend 
-    fetch('https://er-hosting.onrender.com/api/submit', requestOptions)
+    fetch('http://127.0.0.1:10000/api/submit', requestOptions)
         .then((response) => { 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -1821,7 +1814,6 @@ const ResponsiveGrid = () => {
         })
 
       }
-};
 
   // Dummy function to fetch pincode for a city
   
@@ -1905,11 +1897,6 @@ const isFormFilled =
   const handleNext = () => {
     if (!emailError && !contactError && formData.firstName!=='' && formData.lastName!=='' && formData.gender!=='' && formData. interestedFor!=='') {
     setIsNewForm(!isNewForm);
-    }else{
-      toast.error('Please fill all details',{
-        position:'top-center'
-      })
-      return;
     }
   };
   
@@ -1945,14 +1932,14 @@ const isFormFilled =
     }
 
     // State validation
-    if (!selectedState) {
-      newErrors.state = 'State is required';
-    }
+    // if (!selectedState) {
+    //   newErrors.state = 'State is required';
+    // }
 
-    // City validation
-    if (!selectedCity) {
-      newErrors.city = 'City is required';
-    }
+    // // City validation
+    // if (!selectedCity) {
+    //   newErrors.city = 'City is required';
+    // }
 
     // Pincode validation (should be exactly 6 digits)
     if (!postalCode) {
@@ -2164,196 +2151,15 @@ const isFormFilled =
                 }}
               />
 
-              <Grid container spacing={1}>
-              <Grid item xs={4}>
-              <TextField
-  fullWidth
-  margin="normal"
-  select
-  label="State"
-  name='state'
-  value={selectedState || ""} // Ensure the placeholder shows when the value is empty
-  onChange={(e) => {
-    const stateName = e.target.value;
-    setSelectedState(stateName);
-    setPincode(""); // Reset pincode
-    if (stateName) {
-      fetchCities(stateName);
-    } else {
-      setCities([]); // Clear cities if no state is selected
-    }
-  }}
-  sx={{
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "#f6ae22",
-        borderradius: "30px", // Yellow border color
-      },
-      "&:hover fieldset": {
-        borderColor: "#f6ae22", // Yellow border color on hover
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#f6ae22", // Yellow border color when focused
-      },
-    },
-    "& .MuiSelect-icon": {
-      display: "none", // Hide the default dropdown icon
-    },
-  }}
-  InputLabelProps={{
-    sx: {
-      color: "#f6ae22", // Yellow color for the label
-      "&.Mui-focused": {
-        color: "#f6ae22", // Keep the label yellow when focused
-      },
-    },
-  }}
-  InputProps={{
-    startAdornment: (
-      <InputAdornment position="start">
-        <img
-          src={StateImage} // Replace with your actual image source
-          alt="State Icon"
-          style={{ width: 19, height: 24 }} // Adjust the size of the image
-        />
-      </InputAdornment>
-    ),
-    endAdornment: (
-      <InputAdornment position="end">
-        <img
-          src={Dropdown} // Replace with your custom dropdown image source
-          alt="Dropdown Icon"
-          style={{ width: 8, height: 10, cursor: "pointer" }} // Adjust the size of the image
-        />
-      </InputAdornment>
-    ),
-    style: {
-      color: "#eeeeee", // Text color changed to #eeeeee
-      borderradius: "8px",
-    },
-  }}
-  SelectProps={{
-    displayEmpty: true, // Allow placeholder to show when no value is selected
-  }}
-  
->
-  <MenuItem value="">
-    <em>State</em>
-  </MenuItem>
-  {states.map((state) => (
-    <MenuItem key={state.name} value={state.name}>
-      {state.name}
-    </MenuItem>
-  ))}
-</TextField>
-
-
-
-</Grid>
-
-          
-
 <Grid item xs={4}>
-<TextField
-  fullWidth
-  margin="normal"
-  select
-  label="City"
-  name="city"
-  value={selectedCity || ""} // Use empty string to handle placeholder
-  borderradius="30px"
-  onChange={(e) => {
-    const cityName = e.target.value;
-    setSelectedCity(cityName);
-   
-  }}
-  sx={{
-    "& .MuiOutlinedInput-root": {
-      "& fieldset": {
-        borderColor: "#f6ae22",
-        borderradius: "30px", // Yellow border color
-      },
-      "&:hover fieldset": {
-        borderColor: "#f6ae22", // Yellow border color on hover
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "#f6ae22", // Yellow border color when focused
-      },
-      "& input": {
-        color: "#ffffff", // Set input text to white
-      },
-    },
-    "& .MuiSelect-icon": {
-      display: "none", // Hide the default dropdown icon
-    },
-  }}
-  InputLabelProps={{
-    sx: {
-      color: "#f6ae22", // Yellow color for the label
-      "&.Mui-focused": {
-        color: "#f6ae22", // Keep the label yellow when focused
-      },
-    },
-  }}
-  InputProps={{
-    startAdornment: (
-      <InputAdornment position="start">
-        <img
-          src={CityImage} // Replace with your actual image source
-          alt="Interest Icon"
-          style={{ width: 24, height: 24 }} // Adjust the size of the image
-        />
-      </InputAdornment>
-    ),
-    endAdornment: (
-      <InputAdornment position="end">
-        <img
-          src={Dropdown} // Replace with your custom dropdown image source
-          alt="Dropdown Icon"
-          style={{ width: 10, height: 10, cursor: "pointer" }} // Adjust the size of the image
-        />
-      </InputAdornment>
-    ),
-    style: {
-      color: "#eeeeee", // Text color changed to #eeeeee
-      borderradius: "8px",
-    },
-  }}
-  SelectProps={{
-    displayEmpty: true, // Allow placeholder to be displayed when the value is empty
-  }}
->
-  <MenuItem value="">
-    <em>city</em>
-  </MenuItem>
-  {cities.map((city) => (
-    <MenuItem key={city} value={city}>
-      {city}
-    </MenuItem>
-  ))}
-</TextField>
-
-
-
-</Grid>
-
-
-                <Grid item xs={4}>
      <TextField
   fullWidth
-  label="Postal Code"
-  value={formData.postalCode}
+  label="State"
+  value={formData.state}
   type="text" // Change to "text" for better control
-  name="postalCode"
-  placeholder="Pincode"
-  onChange={(e) => {
-    const value = e.target.value;
-    // Only allow numbers and limit to 6 digits
-    if (/^\d{0,6}$/.test(value)) {
-      setFormData({ ...formData, postalCode: value });
-      setErrors({ ...errors, pincode: value.length === 6 ? '' : 'Enter a 6-digit pincode' });
-    }
-  }}
+  name="state"
+  placeholder="state"
+  onChange={handleChange}
   margin="normal"
   error={!!errors.pincode}
   helperText={errors.pincode || 'Enter a 6-digit pincode'}
@@ -2404,7 +2210,67 @@ const isFormFilled =
 
 
                 </Grid>
-              </Grid>
+
+
+                
+<Grid item xs={4}>
+     <TextField
+  fullWidth
+  label="city"
+  value={formData.city}
+  type="text" // Change to "text" for better control
+  name="city"
+  placeholder="city"
+  onChange={handleChange}
+  margin="normal"
+  
+  sx={{
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#f6ae22",
+        borderradius: "30px",
+      },
+      "&:hover fieldset": {
+        borderColor: "#f6ae22",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#f6ae22",
+      },
+      "& input": {
+        color: "#ffffff",
+      },
+    },
+  }}
+  InputProps={{
+    startAdornment: (
+      <InputAdornment position="start">
+        <img
+          src={Pincode} // Replace with your actual image source
+          alt="pincode"
+          style={{ width: 20, height: 24, marginRight: 8 }}
+        />
+      </InputAdornment>
+    ),
+    style: {
+      color: "#eeeeee",
+      borderradius: "8px",
+    },
+  }}
+  InputLabelProps={{
+    sx: {
+      color: "#f6ae22",
+      "&.Mui-focused": {
+        color: "#f6ae22",
+      },
+    },
+  }}
+/>
+
+
+
+
+
+                </Grid>
 
               <Grid container spacing={2}>
                 <Grid item xs={6}>
@@ -3249,7 +3115,3 @@ onChange={(e) => {
 };
 
 export default ResponsiveGrid;
-
-
-
-
