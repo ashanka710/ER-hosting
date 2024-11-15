@@ -1758,7 +1758,7 @@ const ResponsiveGrid = () => {
       })
       .catch((error) => console.error("Error fetching cities:", error));
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault(); // Prevent the default form submission
 
  formData.state=selectedState;
@@ -1790,7 +1790,7 @@ const ResponsiveGrid = () => {
 
    
     // Send data to backend 
-    fetch('https://er-hosting.onrender.com/api/submit', requestOptions)
+   await fetch('https://er-hosting.onrender.com/api/submit', requestOptions)
         .then((response) => { 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
