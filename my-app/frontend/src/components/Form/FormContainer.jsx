@@ -1758,62 +1758,80 @@ const ResponsiveGrid = () => {
   //     })
   //     .catch((error) => console.error("Error fetching cities:", error));
   // };
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form submission
+//   const handleSubmit = (e) => {
+//     e.preventDefault(); // Prevent the default form submission
 
-//  formData.state=selectedState;
-//  formData.city=selectedCity;
+// //  formData.state=selectedState;
+// //  formData.city=selectedCity;
  
 
- console.log(formData.state);
+//  console.log(formData.state);
  
 
 
 
-    // Create the request options
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json', // Specify content type
-        },
-        body: JSON.stringify(formData), // Convert formData to JSON string
-    };
+//     // Create the request options
+//     const requestOptions = {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json', // Specify content type
+//         },
+//         body: JSON.stringify(formData), // Convert formData to JSON string
+//     };
 
 
 
    
-    // Send data to backend 
-    fetch('http://127.0.0.1:10000/api/submit', requestOptions)
-        .then((response) => { 
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then((data) => {
-            console.log(data); // Handle the response from the server
-            // You can display a success message or perform other actions
-        })
-        .catch((error) => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
-        toast.success("Form Submitted sucessfully",{
-          position:"top-center"
-        })
+//     // Send data to backend 
+//     fetch('https://localhost:3000/api/submit', requestOptions)
+//         .then((response) => { 
+//             if (!response.ok) {
+//                 throw new Error('Network response was not ok');
+//             }
+//             return response.json();
+//         })
+//         .then((data) => {
+//             console.log(data); // Handle the response from the server
+//             // You can display a success message or perform other actions
+//         })
+//         .catch((error) => {
+//             console.error('There was a problem with the fetch operation:', error);
+//         });
+//         toast.success("Form Submitted sucessfully",{
+//           position:"top-center"
+//         })
 
 
-        setFormData({
-          address: '',
-    state: '',
-    city: '',
-    postalCode: '',
-    Education: '',
-    educationStatus: '',
-    listenedDate: '',
+//         setFormData({
+//           address: '',
+//     state: '',
+//     city: '',
+//     postalCode: '',
+//     Education: '',
+//     educationStatus: '',
+//     listenedDate: '',
           
-        })
+//         })
 
-      }
+//       }
+const handleSubmit = async () => {
+  try {
+    const response = await fetch('http://localhost:3000/api/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ key: 'value' }),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log('Data received:', data);
+  } catch (error) {
+    console.error('There was a problem with the fetch operation:', error);
+  }
+};
 
   // Dummy function to fetch pincode for a city
   
@@ -2150,7 +2168,7 @@ const isFormFilled =
                   },
                 }}
               />
-
+  <Grid container spacing={1}>
 <Grid item xs={4}>
      <TextField
   fullWidth
@@ -2271,6 +2289,73 @@ const isFormFilled =
 
 
                 </Grid>
+                <Grid item xs={4}>
+     <TextField
+  fullWidth
+  label="Postal Code"
+  value={formData.postalCode}
+  type="text" // Change to "text" for better control
+  name="postalCode"
+  placeholder="Pincode"
+  onChange={(e) => {
+    const value = e.target.value;
+    // Only allow numbers and limit to 6 digits
+    if (/^\d{0,6}$/.test(value)) {
+      setFormData({ ...formData, postalCode: value });
+      setErrors({ ...errors, pincode: value.length === 6 ? '' : 'Enter a 6-digit pincode' });
+    }
+  }}
+  margin="normal"
+  error={!!errors.pincode}
+  helperText={errors.pincode || 'Enter a 6-digit pincode'}
+  sx={{
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#f6ae22",
+        borderradius: "30px",
+      },
+      "&:hover fieldset": {
+        borderColor: "#f6ae22",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#f6ae22",
+      },
+      "& input": {
+        color: "#ffffff",
+      },
+    },
+  }}
+  InputProps={{
+    startAdornment: (
+      <InputAdornment position="start">
+        <img
+          src={Pincode} // Replace with your actual image source
+          alt="pincode"
+          style={{ width: 20, height: 24, marginRight: 8 }}
+        />
+      </InputAdornment>
+    ),
+    style: {
+      color: "#eeeeee",
+      borderradius: "8px",
+    },
+  }}
+  InputLabelProps={{
+    sx: {
+      color: "#f6ae22",
+      "&.Mui-focused": {
+        color: "#f6ae22",
+      },
+    },
+  }}
+/>
+
+
+
+
+
+                </Grid>
+                </Grid>     
 
               <Grid container spacing={2}>
                 <Grid item xs={6}>
