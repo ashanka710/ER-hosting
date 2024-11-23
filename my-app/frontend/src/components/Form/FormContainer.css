@@ -89,6 +89,13 @@
                                             width: 100%;
                                             margin-top: 8px;
                                         }
+                                        .MuiGrid-root>.MuiGrid-item.Gen {
+                                            padding-top: 40px;
+                                            /* padding-left:20px; */
+                                        }
+                                        .MuiGrid-root>.MuiGrid-item.gen {
+                                            padding-top: 10px;
+                                        }
                                     }
                                     
                                     @media (max-width: 600px) and (min-width: 300px) {
@@ -98,7 +105,7 @@
                                         }
                                         .MuiGrid-item .gen {
                                             padding-left: 16px;
-                                            padding-top: 10px;
+                                            /* padding-top: 10px; */
                                         }
                                         .MuiButton-root {
                                             width: 100%;
@@ -107,5 +114,12 @@
                                         .form-container {
                                             height: 670px;
                                             width: 350px;
+                                        }
+                                        .MuiGrid-root>.MuiGrid-item.Gen {
+                                            padding-top: 40px;
+                                            /* padding-left:20px; */
+                                        }
+                                        .MuiGrid-root>.MuiGrid-item.gen {
+                                            padding-top: 10px;
                                         }
                                     }
